@@ -17,7 +17,6 @@ public class TopicProduce {
     private JmsMessagingTemplate jmsMessagingTemplate;
     @Autowired
     private Topic topic;
-
     @Autowired
     private Queue productActiveMQQueue;
 
@@ -31,7 +30,7 @@ public class TopicProduce {
     /**
      * @return
      * @Author QiDing
-     * @Description //TODO 开启多线程测试发送速度
+     * @Description //TODO 开启多线程测试队列发送速度
      * @Date 11:05 2020/6/16 0016
      * @Param
      **/
@@ -42,11 +41,10 @@ public class TopicProduce {
 
     final int J = 5000;
 
-
     /**
      * @return
      * @Author QiDing
-     * @Description //TODO 开启多线程测试发送速度
+     * @Description //TODO 开启多线程测试topic发送速度
      * @Date 11:06 2020/6/16 0016
      * @Param
      **/
