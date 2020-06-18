@@ -16,8 +16,8 @@ public class Index {
     KafkaProducer kafkaProducer;
 
     @RequestMapping("/send")
-    public String test(String lv,Integer count) {
-        kafkaProducer.send(lv,count);
+    public String test(String topic,Integer count) {
+        kafkaProducer.send(topic,count);
         return "success";
     }
 }

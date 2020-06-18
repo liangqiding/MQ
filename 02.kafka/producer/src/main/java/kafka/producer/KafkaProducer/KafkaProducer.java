@@ -23,24 +23,26 @@ public class KafkaProducer {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void send(String data,Integer count) {
+    public void send(String topic,Integer count) {
         for (int i = 1; i <= count; i++) {
-            data(data);
+            data(topic);
         }
+        logger.info("send success");
     }
 
     @Async
-    public void data(String data) {
+    public void data(String topic) {
         JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("data",1);
-        jsonObject1.put("function_tag","SD103Emg");
+//        jsonObject1.put("function_tag","SD103Emg");
+        jsonObject1.put("测试","消息");
         jsonArray.add(jsonObject1);
-        jsonObject.put("payload",jsonArray);
-        jsonObject.put("topic","i2dsp/Emg/0/SD103/MC0000000001LTK000000041002/thing/event/SD103Emg/post");
+        jsonObject.put("json",jsonArray);
+//        jsonObject.put("topic","i2dsp/Emg/0/SD103/MC0000000001LTK000000041002/thing/event/SD103Emg/post");
         try {
-            kafkaTemplate.send("MessageLv"+data,  jsonObject.toJSONString());
+            kafkaTemplate.send(topic,  jsonObject.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("出错！！！！！！！！！！！");
